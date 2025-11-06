@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car HUD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="carhud" class="carhud-container">
+        <!-- Główny panel prędkościomierza -->
+        <div class="speedometer-panel">
+            <!-- Prędkościomierz -->
+            <div class="speed-circle">
+                <svg class="speed-svg" viewBox="0 0 200 200">
+                    <!-- Tło koła -->
+                    <circle class="speed-bg" cx="100" cy="100" r="85" />
+                    <!-- Aktywny pasek prędkości -->
+                    <circle class="speed-progress" cx="100" cy="100" r="85"
+                            style="--speed-percent: 0" />
+                </svg>
+                <div class="speed-content">
+                    <div class="speed-value" id="speed">0</div>
+                    <div class="speed-unit">KM/H</div>
+                </div>
+            </div>
+
+            <!-- RPM Meter -->
+            <div class="rpm-meter">
+                <div class="rpm-bar-container">
+                    <div class="rpm-bar" id="rpmBar"></div>
+                </div>
+                <div class="rpm-label">
+                    <span id="rpmValue">0</span>
+                    <span class="rpm-unit">RPM x1000</span>
+                </div>
+            </div>
+
+            <!-- Bieg -->
+            <div class="gear-display">
+                <div class="gear-label">BIEG</div>
+                <div class="gear-value" id="gear">N</div>
+            </div>
+        </div>
+
+        <!-- Panel informacyjny -->
+        <div class="info-panel">
+            <!-- Paliwo -->
+            <div class="info-item fuel-item">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9h14V5H3v4zm0 0v8c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V9M3 9L2 4h16l-1 5"/>
+                        <path d="M18 9v6c0 .6.4 1 1 1s1-.4 1-1V8c0-.6-.4-1-1-1h-1"/>
+                    </svg>
+                </div>
+                <div class="info-data">
+                    <div class="info-bar">
+                        <div class="info-bar-fill fuel-bar" id="fuelBar"></div>
+                    </div>
+                    <div class="info-value" id="fuelValue">100%</div>
+                </div>
+            </div>
+
+            <!-- Wytrzymałość pojazdu -->
+            <div class="info-item health-item">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <div class="info-data">
+                    <div class="info-bar">
+                        <div class="info-bar-fill health-bar" id="healthBar"></div>
+                    </div>
+                    <div class="info-value" id="healthValue">100%</div>
+                </div>
+            </div>
+
+            <!-- Status indicators -->
+            <div class="status-indicators">
+                <div class="indicator" id="engineIndicator">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    </svg>
+                    <span>SILNIK</span>
+                </div>
+                <div class="indicator" id="lightsIndicator">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/>
+                    </svg>
+                    <span>ŚWIATŁA</span>
+                </div>
+                <div class="indicator" id="beltIndicator">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/>
+                    </svg>
+                    <span>PASY</span>
+                </div>
+            </div>
+
+            <!-- Nazwa pojazdu -->
+            <div class="vehicle-name">
+                <span id="vehicleName">POJAZD</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
